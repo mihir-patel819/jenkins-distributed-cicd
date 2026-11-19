@@ -4,11 +4,17 @@ pipeline {
         label 'worker'
     }
 
+    options {
+        skipDefaultCheckout(true)
+    }
+
     stages {
         stage('Checkout') {
             steps {
                 echo 'Downloading website from GitHub'
-                checkout scm
+
+                git branch: 'main',
+                    url: 'https://github.com/mihir-patel819/jenkins-distributed-cicd.git'
             }
         }
 
